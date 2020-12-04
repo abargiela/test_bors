@@ -33,8 +33,8 @@ jobs:
             DST_REPO='abargiela/test_bors_ng_copy'
             EMAIL='test@gmail.com'
             USERNAME='test'
-            SRC_BRANCH='main'
-            DST_BRANCH="${{ steps.current_branch.outputs.branch }}"
+            SRC_BRANCH=${{ steps.current_branch.outputs.branch }}
+            DST_BRANCH=${{ steps.current_branch.outputs.branch }}
 
             # Set the key to be able to clone the repo
             eval "$(ssh-agent -s)"
