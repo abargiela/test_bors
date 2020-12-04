@@ -34,7 +34,7 @@ jobs:
             DST_REPO='abargiela/test_bors_ng_copy'
             EMAIL='test@gmail.com'
             USERNAME='test'
-            SRC_BRANCH='test9'
+            SRC_BRANCH='main'
 
             # Set the key to be able to clone the repo
             eval "$(ssh-agent -s)"
