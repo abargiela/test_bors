@@ -1,6 +1,7 @@
 name: copy repo
 
-on: workflow_dispatch
+on: #workflow_dispatch
+  push:
 
 jobs:
   copy_repo:
