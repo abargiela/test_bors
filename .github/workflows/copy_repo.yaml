@@ -50,11 +50,11 @@ jobs:
               --branch $BRANCH \
               "git@github.com:$DST_REPO.git" \
               $CLONE_DIR
-            # Create the current branch in the destination repository
+
+              # Create the current branch in the destination repository
             cd $CLONE_DIR
-            if [ -z "$BRANCH" ]; then
-                git checkout -b $BRANCH
-            fi
+            git rev-parse --verify remotes/origin/$BRANCH; if [ $? -eq 0 ];then git checkout $BRANCH; else git checkout -b $BRANCH;fi
+
             # Cleaning all files on the destination repository
             git rm -r .
             # Copy all files from the src repo to the dst repo
