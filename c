@@ -1,2 +1,1 @@
-oooooo
 oo
