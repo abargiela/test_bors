@@ -31,7 +31,8 @@ jobs:
           run: |
             # Create a temporary folder to clone the other repo
             CLONE_DIR=$(mktemp -d)
-            DST_REPO='xaynetwork/xayn_ai_release'
+            #DST_REPO='xaynetwork/xayn_ai_release'
+            DST_REPO='abargiela/test_bors'
             EMAIL='ci@xayn.io'
             USERNAME='ci'
             BRANCH=${{ steps.current_branch.outputs.branch }}
