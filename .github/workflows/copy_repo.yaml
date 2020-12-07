@@ -52,7 +52,7 @@ jobs:
             cd $CLONE_DIR
             #if [ -z "${DST_BRANCH}" ]; then
             echo "Branch check"
-            git switch -c $DST_BRANCH
+            git checkout -b  $DST_BRANCH
             #git checkout -b ${DST_BRANCH}
             echo "Branch return $?"
             echo "Branch changed"
@@ -69,6 +69,7 @@ jobs:
                 --delete;
             cd $CLONE_DIR
 
+            git pull origin $DST_BRANCH --allow-unrelated-histories
             git add -A;
             # If anything is modified is commited
             if [ $(git status --porcelain | wc -l) -gt 0 ]; then
