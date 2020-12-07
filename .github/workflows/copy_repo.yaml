@@ -36,7 +36,6 @@ jobs:
             USERNAME='ci'
             BRANCH=${{ steps.current_branch.outputs.branch }}
             SRC_COMMIT=$(git rev-parse HEAD)
-
             # Set the key to be able to clone the repo
             eval "$(ssh-agent -s)"
             echo "${{secrets.SSH_PRIVATE_KEY }}" > /tmp/repo_rsa
@@ -44,7 +43,6 @@ jobs:
             ssh-add /tmp/repo_rsa
             git config --global user.email $EMAIL
             git config --global user.name $USERNAME
-
             # cloning the destination repo
             git clone \
               --depth 1 \
@@ -52,16 +50,13 @@ jobs:
               --branch $BRANCH \
               "git@github.com:$DST_REPO.git" \
               $CLONE_DIR
-
             # Create the current branch in the destination repository
             cd $CLONE_DIR
             if [ -z "$BRANCH" ]; then
                 git checkout -b $BRANCH
             fi
-
             # Cleaning all files on the destination repository
             git rm -r .
-
             # Copy all files from the src repo to the dst repo
             cd - ;
             rsync -az * .gitignore  $CLONE_DIR \
@@ -69,10 +64,12 @@ jobs:
               --exclude '.github' \
               --delete;
             cd $CLONE_DIR
-
             git add -A;
             # If anything is modified is commited
             if [ $(git status --porcelain | wc -l) -gt 0 ]; then
             git commit --message "Commit: $SRC_COMMIT - Copy Repo: $GITHUB_REPOSITORY to Repo: $DST_REPO -  Branch: $BRANCH"
                 git push -u origin HEAD:$BRANCH
             fi
+
+
+
