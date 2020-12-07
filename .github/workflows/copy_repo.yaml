@@ -69,7 +69,7 @@ jobs:
                 --delete;
             cd $CLONE_DIR
 
-            git pull --rebase 
+            git stash
             git add -A;
             # If anything is modified is commited
             if [ $(git status --porcelain | wc -l) -gt 0 ]; then
