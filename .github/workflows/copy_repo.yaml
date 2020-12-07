@@ -50,13 +50,6 @@ jobs:
 
             # Create the current branch in the destination repository
             cd $CLONE_DIR
-            #if [ -z "${DST_BRANCH}" ]; then
-            echo "Branch check"
-            git checkout -b  $DST_BRANCH
-            #git checkout -b ${DST_BRANCH}
-            echo "Branch return $?"
-            echo "Branch changed"
-            #fi
 
             # Cleaning all files on the destination repository
             git rm -r .
@@ -69,7 +62,6 @@ jobs:
                 --delete;
             cd $CLONE_DIR
 
-            git stash
             git add -A;
             # If anything is modified is commited
             if [ $(git status --porcelain | wc -l) -gt 0 ]; then
