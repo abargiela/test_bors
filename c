@@ -1,2 +1,1 @@
-oooooo
-oooooo
+letter o
