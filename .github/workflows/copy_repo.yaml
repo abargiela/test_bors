@@ -52,6 +52,7 @@ jobs:
             cd $CLONE_DIR
             if [ -z "${DST_BRANCH}" ]; then
                 echo "Branch check"
+                echo "Return of DST_BRANCH: $DST_BRANCH"
                 git checkout -b ${DST_BRANCH}
                 echo "Branch return $?"
                 echo "Branch changed"
