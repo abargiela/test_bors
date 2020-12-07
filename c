@@ -1,4 +1,2 @@
-oooooo
-ooo
-oooo
-oooooo
+
+file 
