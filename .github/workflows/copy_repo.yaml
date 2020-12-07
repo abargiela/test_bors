@@ -46,8 +46,6 @@ jobs:
             # cloning the destination repo
             git clone \
               --depth 1 \
-              --single-branch \
-              --branch $BRANCH \
               "git@github.com:$DST_REPO.git" \
               $CLONE_DIR
 
