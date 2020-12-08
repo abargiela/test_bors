@@ -1,6 +1,3 @@
-oooooo
-iiii
-oo
 ooooo
 oidisidsid
 oooooo
