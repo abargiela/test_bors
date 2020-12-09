@@ -47,8 +47,8 @@ jobs:
             git config --global user.email $EMAIL
             git config --global user.name $USERNAME
 
-            - run: echo d 
-            - run: pwd
+            echo d 
+            pwd
              # cloning the destination repo
             BRANCH_EXISTS=$(git ls-remote --heads "git@github.com:$DST_REPO.git" $BRANCH | wc -l);
             if [ $BRANCH_EXISTS -eq 0 ];then
@@ -64,8 +64,8 @@ jobs:
             git rm -r .
 
 
-            - run: echo e 
-            - run: pwd
+            echo e 
+            pwd
             # Copy all files from the src repo to the dst repo
             cd - ;
             rsync -avz * .gitignore  $CLONE_DIR \
@@ -75,8 +75,8 @@ jobs:
             cd $CLONE_DIR
             ls -laR 
 
-            - run: echo f 
-            - run: pwd
+            echo f 
+            pwd
 
             find . -name world2.txt
             pwd
