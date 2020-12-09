@@ -31,6 +31,9 @@ jobs:
             path: artifact_test/world2.txt
         - run: echo b 
         - run: pwd
+        - uses: actions/download-artifact@v2
+          with:
+            name: artifact_test
 
         - name: Get current branch
           shell: bash
