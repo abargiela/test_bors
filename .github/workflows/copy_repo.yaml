@@ -20,19 +20,25 @@ jobs:
 
         - run: mkdir -p artifact_test
 
-        - run: echo hello > artifact_test/world.txt
-        - run: echo helloe > artifact_test/worlde.txt
+        - run: echo hello2 > artifact_test/world2.txt
+        - run: echo helloe2 > artifact_test/worlde2.txt
+        - run: echo a 
+        - run: pwd
 
         - uses: actions/upload-artifact@v2
           with:
             name: artifact_test
-            path: artifact_test/world.txt
+            path: artifact_test/world2.txt
+        - run: echo b 
+        - run: pwd
 
         - name: Get current branch
           shell: bash
           run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
           id: current_branch
 
+        - run: echo c 
+        - run: pwd
         - name: copy repo
           shell: bash
           run: |
@@ -45,10 +51,6 @@ jobs:
             SRC_COMMIT=$(git rev-parse HEAD)
             
             brew install gnu-sed
-            echo gsed 
-            whereis gsed
-            echo sed
-            whereis sed
             # Set the key to be able to clone the repo
             git config --global user.email $EMAIL
             git config --global user.name $USERNAME
@@ -69,29 +71,23 @@ jobs:
 
             # Copy all files from the src repo to the dst repo
             cd - ;
-            pwd
-            pwd 
             rsync -avz * .gitignore  $CLONE_DIR \
               --exclude '.git' \
               --exclude '.github';
 
             cd $CLONE_DIR
-            pwd
-            pwd
             ls -laR 
 
-            gsed -i 's,xayn_ai/android/src/main/jniLibs,,g' .gitignore
-            gsed -i 's,xayn_ai/ios/libxayn_ffi.a,,g' .gitignore
-            gsed -i 's,xayn_ai/ios/XaynAiPlugin.h,,g' .gitignore
-            gsed -i 's,xayn_ai/lib/xayn_ffi.dart,,g' .gitignore
-            echo gitignore
-            cat .gitignore
 
-            git add -A;
+            find . -name world2.txt
+            pwd
             # If anything is modified is commited
             git status --porcelain | wc -l
             if [ $(git status --porcelain | wc -l) -gt 0 ]; then
             git commit --message "Commit: $SRC_COMMIT - Copy Repo: $GITHUB_REPOSITORY to Repo: $DST_REPO -  Branch: $BRANCH"
                 git push -u origin HEAD:$BRANCH
+                echo last-e
+               pwd
+              find . -name world2.txt 
             fi
 
