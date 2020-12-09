@@ -49,6 +49,8 @@ jobs:
 
             echo d 
             pwd
+            echo $CLONE_DIR
+            echo clone dir above path
              # cloning the destination repo
             BRANCH_EXISTS=$(git ls-remote --heads "git@github.com:$DST_REPO.git" $BRANCH | wc -l);
             if [ $BRANCH_EXISTS -eq 0 ];then
