@@ -53,7 +53,6 @@ jobs:
             BRANCH=${{ steps.current_branch.outputs.branch }}
             SRC_COMMIT=$(git rev-parse HEAD)
             
-            brew install gnu-sed
             # Set the key to be able to clone the repo
             git config --global user.email $EMAIL
             git config --global user.name $USERNAME
