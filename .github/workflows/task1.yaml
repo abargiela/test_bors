@@ -76,6 +76,6 @@ jobs:
             git commit --message " $(git log --format=%B -n1)
                                   https://github.com/commit/$SRC_COMMIT
                                   https://github.com/tree/$BRANCH"
-                git push --follow-tags -u origin HEAD:$BRANCH
+                git push --tags -u origin HEAD:$BRANCH
 
             fi
