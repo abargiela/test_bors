@@ -3,9 +3,10 @@ name: test reuse
 on:
   workflow_dispatch:
   pull_request:
-    types: [closed]
-    branches:
-      - "main"
+  push:
+#    types: [closed]
+#    branches:
+#      - "main"
 
 jobs:
   number1:
@@ -75,5 +76,6 @@ jobs:
             git commit --message " $(git log --format=%B -n1)
                                   https://github.com/commit/$SRC_COMMIT
                                   https://github.com/tree/$BRANCH"
-                git push -u origin HEAD:$BRANCH
+                git push --follow-tags -u origin HEAD:$BRANCH
+
             fi
